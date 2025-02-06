@@ -1,6 +1,6 @@
 ---
 title: "In Class Lab - DIY Functions"
-author: "Dr. Shoemaker"
+author: "Angelica Gamboa"
 date: "DATA 2401"
 output: html_document
 ---
@@ -16,15 +16,27 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
+Fahrenheit_to_Celcius <- function(fahreinheit) {
+  celcius <- (fahreinheit - 32)*5/9
+  return(celcius)
+}
 
-
+#Test
+Fahrenheit_to_Celcius(40)
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
 ```{r}
-
+expanding_function <- function(fahreinheit,distance) {
+  celcius <- (fahreinheit - 32)*5/9
+  meters <- distance*0.3048
+  return(c(celcius,meters))
+}
+  
+#Test
+expanding_function(212,3)
 
 ```
 
@@ -32,7 +44,18 @@ The questions from your notes today are below, please copy your answers them her
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
+checking_num <- function(num) {
+  if(num < 0) {
+    print("Negative number") 
+  }else if (num > 0) {
+    print("Positive number")
+  }else {
+    print("Number is zero.")
+  }
+}
 
+#Test
+checking_num(15)
 
 ```
 
@@ -40,7 +63,15 @@ The questions from your notes today are below, please copy your answers them her
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
-
+abs_value <- function(num) {
+  if (num < 0) {
+    return(num*-1)
+  } else {
+    return(num)
+  }
+}
+#Test
+abs_value(-6)
 
 ```
 
@@ -48,8 +79,19 @@ The questions from your notes today are below, please copy your answers them her
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
-
-
+abs_value <- function(num) {
+  if(!is.numeric(num)){
+    print("Please pass a numerical value to this function")
+    return(NULL)
+  }
+  if (num < 0) {
+    return(num*-1)
+  } else {
+    return(num)
+  }
+}
+#Test
+abs_value("abc")
 
 ```
    
